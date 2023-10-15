@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ForButton : MonoBehaviour
 {
-    
+    public TMP_Text collision_text;
+    public int collision_status = 100;
+   
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -21,5 +24,15 @@ public class ForButton : MonoBehaviour
 
 
 
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.name == "Cylinder") 
+        {
+            collision_status -= 1;
+            collision_text.text = $"Collision {collision_status}";
+
+        }
+        
     }
 }

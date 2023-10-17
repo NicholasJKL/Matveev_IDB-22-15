@@ -25,7 +25,7 @@ public class ForButton : MonoBehaviour
 
 
     }
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Cylinder") 
         {

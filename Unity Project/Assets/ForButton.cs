@@ -6,8 +6,10 @@ using UnityEngine;
 public class ForButton : MonoBehaviour
 {
     public TMP_Text collision_text;
-    public int collision_status = 100;
-   
+    int collision_status = 100;
+    public Rigidbody rb;
+    float bounceForce = 16f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,11 @@ public class ForButton : MonoBehaviour
     {
         if (collision.gameObject.name == "Cylinder") 
         {
+
+            Vector3 direction = (transform.position - collision.transform.position).normalized;
+            Debug.Log(transform.position);
+            Debug.Log(collision.transform.position);
+            rb.AddForce(direction * bounceForce, ForceMode.Impulse);
             collision_status -= 1;
             collision_text.text = $"Collision {collision_status}";
 
